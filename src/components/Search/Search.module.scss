@@ -1,0 +1,91 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-black);
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background-color: var(--color-darkerbg);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-link);
+  }
+}
+
+.searchField {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.searchFieldLine {
+  border-bottom: 1px solid var(--color-black);
+
+  .searchInput {
+    width: 220px;
+    max-width: 40vw;
+  }
+}
+
+.searchFieldPill {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--rounded-full);
+}
+
+.searchInput {
+  flex: 1 0 0;
+  min-width: 0;
+  padding: var(--spacing-xs) 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-black);
+  background: none;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-gray);
+  }
+
+  // Hide the native search "clear" control for a consistent look.
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+
+.searchSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-black);
+
+  &:focus-visible {
+    border-radius: 0.25rem;
+    outline: 3px solid var(--color-link);
+  }
+}

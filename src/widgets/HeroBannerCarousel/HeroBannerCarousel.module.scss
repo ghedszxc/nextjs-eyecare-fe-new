@@ -1,0 +1,241 @@
+@use '../../styles/utilities/mixins';
+
+.heroBannerCarousel {
+  background-color: var(--color-white);
+  padding: 48px 80px;
+  width: 100%;
+
+  @include mixins.respond(md) {
+    padding: 24px 16px;
+  }
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+
+  @include mixins.respond(md) {
+    margin-bottom: 24px;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: 8px;
+}
+
+.swiperContainer {
+  position: relative;
+  overflow: hidden;
+
+  :global(.swiper) {
+    overflow: visible;
+  }
+
+  :global(.swiper-slide) {
+    width: 80%;
+    height: 552px;
+
+    @include mixins.respond(md) {
+      width: 100%;
+      height: 656px;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  width: 97%;
+  height: 97%;
+  margin: auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 10px 0 rgba(54, 54, 54, 0),
+    0 0 9px 0 rgba(54, 54, 54, 0.01),
+    0 0 8px 0 rgba(54, 54, 54, 0.05),
+    0 0 6px 0 rgba(54, 54, 54, 0.09),
+    0 0 3px 0 rgba(54, 54, 54, 0.1);
+  background: radial-gradient(ellipse at 100% 50%, #dfdfdf, #ffffff);
+
+  @include mixins.respond(md) {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+.cardCorner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.cardCornerImage {
+  display: block;
+}
+
+.cardCornerDot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #940000;
+  margin: 10px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  padding: 0 64px;
+  gap: 24px;
+  flex-shrink: 0;
+
+  @include mixins.respond(md) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 52px 24px 24px;
+    justify-content: space-between;
+    z-index: 2;
+  }
+}
+
+.cardTitle {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-black);
+
+  @include mixins.respond(md) {
+    color: var(--color-white);
+  }
+}
+
+.cardBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardBody {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.7;
+  color: var(--color-black);
+
+  @include mixins.respond(md) {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-white);
+    opacity: 0.85;
+  }
+}
+
+.cardCtaContainer {
+  display: flex;
+  gap: 12px;
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+  }
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: 50%;
+  flex-shrink: 0;
+
+  @include mixins.respond(md) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.48);
+      z-index: 1;
+    }
+  }
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+
+  @include mixins.respond(md) {
+    margin-top: 24px;
+  }
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding: 0;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  @include mixins.respond(md) {
+    display: none;
+  }
+}
+
+.navIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--color-black);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    width 0.3s,
+    border-radius 0.3s,
+    background-color 0.3s;
+
+  &.dotActive {
+    width: 40px;
+    border-radius: 10px;
+    background-color: var(--color-black);
+    border-color: var(--color-black);
+  }
+}

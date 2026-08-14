@@ -1,0 +1,30 @@
+.info-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--color-black);
+  }
+
+  .badge {
+    border-radius: 50%;
+    color: var(--color-white);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cecece;
+  }
+
+  &.hasIcon .header {
+    color: var(--color-lenscrafter-blue);
+  }
+}

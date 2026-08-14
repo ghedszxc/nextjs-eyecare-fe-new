@@ -1,0 +1,208 @@
+@use './../../styles/base/typography' as *;
+@use '../../styles/utilities/mixins';
+
+.brands-tab {
+  padding-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+
+    .title {
+      color: var(--color-black);
+    }
+  }
+
+  .tab-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .tab-buttons {
+      display: flex;
+      .tab-trigger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-white);
+
+        &:hover {
+          border-color: var(--theme-color, transparent);
+          border-bottom-color: transparent;
+        }
+
+        &.tab-active {
+          background-color: var(--theme-color, var(--color-darkerbg));
+          border-color: var(--theme-color, var(--color-white));
+          box-shadow: none;
+        }
+
+        img {
+          max-height: 69.01px;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .tab-content-area {
+      display: grid;
+      grid-template-columns: clamp(100px, 50%, 592px) clamp(100px, 50%, 560px);
+      gap: var(--spacing-xl);
+      place-items: center stretch;
+
+      background-color: var(--theme-color, var(--color-darkerbg));
+      padding: var(--spacing-3xl);
+
+      .content-cards {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        height: 100%;
+
+        .card {
+          flex: 1;
+
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-md);
+
+          background-color: var(--color-white);
+          padding: 28.5px var(--spacing-lg);
+
+          color: var(--theme-text-color, var(--color-black));
+
+          .card-header {
+            display: flex;
+            gap: var(--spacing-sm);
+
+            .card-logo {
+              min-height: var(--spacing-xl);
+              min-width: var(--spacing-xl);
+            }
+          }
+        }
+      }
+
+      .content-side {
+        min-width: 0;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+
+        // width: 560px;
+        .card-cta {
+          width: 100%;
+          border-radius: var(--rounded-xs);
+        }
+        .card-image {
+          flex: 1;
+          min-width: 0;
+          width: 100%;
+          height: 339px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .accordion {
+    overflow: visible;
+    .accordion-header {
+      border-radius: var(--spacing-md);
+      width: 100%;
+      padding: var(--spacing-md);
+      background-color: var(--theme-color, var(--color-black));
+      border: 0;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+      color: var(--color-white);
+      font-family: var(--font-family-primary);
+      gap: var(--spacing-sm);
+
+      &.accordion-header-open {
+        color: var(--color-black);
+        border-radius: var(--spacing-md) var(--spacing-md) 0px 0px;
+      }
+
+      img {
+        object-fit: cover;
+        @include mixins.respond(md) {
+          min-width: 0;
+        }
+      }
+    }
+
+    :global(.accordionContent) {
+      border: 0;
+    }
+    :global(.accordionContentInner) {
+      padding: 0;
+    }
+
+    .accordion-content {
+      background-color: var(--theme-color, var(--color-darkerbg));
+      padding: var(--spacing-md);
+
+      display: flex;
+      flex-direction: column;
+
+      gap: var(--spacing-sm);
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+
+        min-height: 114px;
+
+        background-color: var(--color-white);
+        padding: var(--spacing-md);
+
+        color: var(--theme-text-color, var(--color-black));
+
+        .card-header {
+          display: flex;
+          gap: var(--spacing-sm);
+          align-items: center;
+
+          .card-logo {
+            min-height: var(--spacing-xl);
+            min-width: var(--spacing-xl);
+          }
+        }
+        .card-description {
+          font-size: var(--font-size-sm);
+        }
+      }
+
+      .card-image {
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .card-cta {
+        width: 100%;
+        padding: 12px 22px;
+        border-radius: 0;
+        flex-wrap: wrap;
+
+        span {
+          max-width: 80%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

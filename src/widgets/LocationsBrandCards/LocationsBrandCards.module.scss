@@ -1,0 +1,48 @@
+@use '../../styles/utilities/mixins';
+
+.locations-brand-cards {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+
+    .heading-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+
+      .locations-brand-title {
+        color: var(--color-black);
+      }
+      .locations-brand-subtitle {
+        color: var(--color-gray);
+        line-height: 1.5;
+      }
+    }
+
+    .content-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+
+      .locations-image {
+        object-fit: cover;
+        flex: 1;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .card-wrapper {
+        flex: 1;
+
+        .card {
+          height: 100%;
+        }
+      }
+
+      @include mixins.respond(md) {
+        flex-direction: column;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@use '../../styles/utilities/mixins';
+
+.teaser5050-3text {
+  display: block;
+  width: 100%;
+  background-color: var(--color-white);
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xl);
+  }
+
+  &.right .content {
+    flex-direction: row-reverse;
+  }
+
+  .title {
+    color: var(--color-black);
+  }
+  .image {
+    width: 50%;
+    border-radius: 16px;
+  }
+
+  @include mixins.respond(md) {
+    .container {
+      padding: var(--spacing-lg) var(--spacing-md);
+      gap: 0;
+    }
+
+    &.right .container {
+      gap: var(--spacing-xl);
+    }
+
+    .content {
+      flex-direction: column;
+    }
+
+    &.right .content {
+      flex-direction: column-reverse;
+      gap: var(--spacing-xl);
+    }
+
+    .image {
+      width: 100%;
+      padding: 0;
+    }
+  }
+}

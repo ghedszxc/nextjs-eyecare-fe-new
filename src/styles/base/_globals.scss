@@ -1,0 +1,118 @@
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/rounded' as *;
+
+:root {
+  /* Color Palette */
+  --color-white: #{$color-neutral-0};
+  --color-true-black: #{$color-neutral-900};
+  --color-black: #{$color-neutral-800};
+  --color-gray: #{$color-neutral-700};
+  --color-light-gray-2: #{$color-neutral-350};
+  --color-light-gray: #{$color-neutral-300};
+  --color-link: #{$color-blue};
+  --color-darkerbg: #{$color-neutral-200};
+  --color-extra-light-gray: #{$color-neutral-100};
+  --color-double-extra-light-gray: #{$color-neutral-50};
+
+  --color-gray-50: #{$color-gray-50};
+
+  --color-gradient-black: #{$color-gradient-black};
+  --color-gradient-graytowhite: #{$color-gradient-graytowhite};
+  --color-gradient-white: #{$color-gradient-white};
+
+  --color-lenscrafter-blue: #{$color-lenscrafter-blue};
+  --color-lenscrafter-desctext: #{$color-lenscrafter-desctext};
+
+  --color-foreyes-brown: #{$color-foreyes-brown};
+  --color-foreyes-icontext: #{$color-foreyes-icontext};
+  --color-foreyes-desctext: #{$color-foreyes-desctext};
+
+  --color-targetoptical-red: #{$color-targetoptical-red};
+  --color-targetoptical-icontext: #{$color-targetoptical-icontext};
+  --color-targetoptical-desctext: #{$color-targetoptical-desctext};
+
+  --color-pearlevision-green: #{$color-pearlevision-green};
+  --color-pearlevision-icontext: #{$color-pearlevision-icontext};
+  --color-pearlevision-desctext: #{$color-pearlevision-desctext};
+
+  /* Spacing */
+  --spacing-xs: #{$space-xs};
+  --spacing-sm: #{$space-sm};
+  --spacing-md: #{$space-md};
+  --spacing-lg: #{$space-lg};
+  --spacing-xl: #{$space-xl};
+  --spacing-2xl: #{$space-2xl};
+  --spacing-3xl: #{$space-3xl};
+  --spacing-4xl: #{$space-4xl};
+  --spacing-5xl: #{$space-5xl};
+  --spacing-6xl: #{$space-6xl};
+  --spacing-7xl: #{$space-7xl};
+
+  /* Typography */
+  --font-family-primary: #{$font-family-primary};
+
+  --font-weight-regular: #{$font-weight-regular};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-bold: #{$font-weight-bold};
+
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-md: #{$font-size-md};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
+  --font-size-2xl: #{$font-size-2xl};
+  --font-size-3xl: #{$font-size-3xl};
+  --font-size-4xl: #{$font-size-4xl};
+
+  --line-height-normal: #{$line-height-normal};
+  --line-height-tight-1: #{$line-height-tight-1};
+  --line-height-tight-2: #{$line-height-tight-2};
+  --line-height-tight-3: #{$line-height-tight-3};
+  --line-height-tight-4: #{$line-height-tight-4};
+  --line-height-tight-5: #{$line-height-tight-5};
+
+  // Border Radius
+  --rounded-none: #{$rounded-none};
+  --rounded-xs: #{$rounded-xs};
+  --rounded-sm: #{$rounded-sm};
+  --rounded-md: #{$rounded-md};
+  --rounded-lg: #{$rounded-lg};
+  --rounded-xl: #{$rounded-xl};
+  --rounded-2xl: #{$rounded-2xl};
+  --rounded-full: #{$rounded-full};
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Text alignment */
+.text-left,
+.align--left {
+  text-align: left;
+}
+
+.text-center,
+.align--center {
+  text-align: center;
+}
+
+.text-right,
+.align--right {
+  text-align: right;
+}
+
+.text-justified,
+.align--justify {
+  text-align: justify;
+}

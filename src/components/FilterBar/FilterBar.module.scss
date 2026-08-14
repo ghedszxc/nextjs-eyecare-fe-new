@@ -1,0 +1,225 @@
+@use '../../styles/utilities/mixins';
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+}
+
+.viewToggle,
+.filterActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--grayoutline, #dbdbdb);
+  background: white;
+  cursor: pointer;
+  font-size: var(--size-body, 14px);
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+
+  &.active {
+    background: var(--neutral-50, #ededed);
+    border-color: #4d4d4d;
+  }
+
+  @include mixins.respond(md) {
+    padding: 8px;
+    gap: 0;
+  }
+}
+
+.chipLabel {
+  @include mixins.respond(md) {
+    display: none;
+  }
+}
+
+.dropdownWrapper {
+  position: relative;
+}
+
+// Search expanded chip
+.searchExpanded {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  border: 1px solid #4d4d4d;
+  background: white;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: searchExpand 0.25s ease forwards;
+
+  @include mixins.respond(md) {
+    // Prevent overflow on narrow viewports: viewport minus widget padding (32px) minus viewToggle (~80px) minus 8px gap
+    max-width: calc(100vw - 150px);
+  }
+}
+
+.searchCollapsing {
+  animation: searchCollapse 0.25s ease forwards;
+}
+
+@keyframes searchExpand {
+  from {
+    width: 0;
+    opacity: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  to {
+    width: 220px;
+    opacity: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@keyframes searchCollapse {
+  from {
+    width: 220px;
+    opacity: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  to {
+    width: 0;
+    opacity: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.searchIconInner {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: #4d4d4d;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: var(--size-body, 14px);
+  font-weight: 500;
+  line-height: 1.5;
+  background: transparent;
+  color: var(--base-black, #080808);
+
+  &::placeholder {
+    color: #9e9e9e;
+  }
+}
+
+.searchClear {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  color: #4d4d4d;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--base-black, #080808);
+  }
+}
+
+.dropdownPanel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: white;
+  border: 1px solid var(--grayoutline, #dbdbdb);
+  border-radius: 16px;
+  padding: 8px;
+  min-width: 150px;
+  z-index: 100;
+  box-shadow:
+    0 0 3px rgba(54, 54, 54, 0.1),
+    0 0 6px rgba(54, 54, 54, 0.09),
+    0 0 8px rgba(54, 54, 54, 0.05),
+    0 0 9px rgba(54, 54, 54, 0.01);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+// Mobile: Filter/Sort button hide animation when search expands
+.filterFaded {
+  animation: filterFadeOut 0.25s ease forwards;
+  pointer-events: none;
+}
+
+// Mobile: Filter/Sort button reveal animation when search collapses
+.filterFading {
+  animation: filterFadeIn 0.25s ease forwards;
+}
+
+@keyframes filterFadeOut {
+  from {
+    opacity: 1;
+    max-width: 120px;
+  }
+  to {
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+  }
+}
+
+@keyframes filterFadeIn {
+  from {
+    opacity: 0;
+    max-width: 0;
+  }
+  to {
+    opacity: 1;
+    max-width: 120px;
+  }
+}
+
+.dropdownOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: var(--size-body, 16px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  white-space: nowrap;
+  color: var(--base-black, #080808);
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+
+  &:hover:not(.selected) {
+    background: var(--neutral-50, #ededed);
+  }
+
+  &.selected {
+    background: var(--base-black, #080808);
+    color: white;
+  }
+}

@@ -1,0 +1,93 @@
+@use '../../styles/utilities/mixins';
+
+.textCenterCta {
+  display: block;
+  width: 100%;
+  background-color: var(--color-white);
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl) var(--spacing-7xl);
+    gap: var(--spacing-xl);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 866px;
+    gap: var(--spacing-xl);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    line-height: var(--line-height-tight-2);
+    color: var(--color-black);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    line-height: var(--line-height-tight-1);
+    color: var(--color-neutral-700);
+  }
+
+  .ctaWrapper {
+    display: flex;
+    gap: var(--spacing-md);
+
+    @include mixins.respond(md) {
+      display: grid;
+      gap: var(--spacing-sm);
+    }
+
+    &.iconOnly {
+      @include mixins.respond(md) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  .cta {
+    img {
+      height: var(--font-size-xs);
+      width: var(--font-size-xs);
+    }
+  }
+
+  @include mixins.respond(md) {
+    .container {
+      padding: var(--spacing-lg) var(--spacing-md);
+      gap: var(--spacing-md);
+    }
+
+    .content {
+      max-width: 343px;
+      gap: var(--spacing-md);
+    }
+
+    .title {
+      font-size: var(--font-size-lg);
+      line-height: var(--line-height-tight-3);
+    }
+
+    .subtitle {
+      font-size: 18px;
+      line-height: var(--line-height-normal);
+    }
+
+    .cta {
+      width: 100%;
+    }
+
+    .iconOnly .cta {
+      width: auto;
+    }
+  }
+}

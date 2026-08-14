@@ -1,0 +1,97 @@
+@use '../../styles/utilities/mixins';
+
+/* ============================================================================ */
+/* Desktop nav tabs                                                             */
+/* ============================================================================ */
+
+// Color hooks (--nav-tab-color / --nav-tab-accent / --nav-trigger-svg-filter)
+// are set by the Navigation shell's transparent state; defaults apply otherwise.
+
+.navTabs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+
+  @include mixins.respond(lg) {
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    padding: 5px;
+    margin: -5px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.navTab {
+  display: block;
+  flex-shrink: 0;
+}
+
+.navTabLink {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  height: 33px;
+  padding: 0 var(--spacing-xs);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  color: var(--nav-tab-color, var(--color-black));
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition:
+    border-color 0.2s ease,
+    color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border-bottom-color: var(--nav-tab-accent, var(--color-black));
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-link);
+    outline-offset: 2px;
+    border-bottom-color: var(--nav-tab-accent, var(--color-black));
+  }
+}
+
+.navTabTrigger {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+
+  svg {
+    filter: var(--nav-trigger-svg-filter, none);
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
+}
+
+.navTabTriggerOpen {
+  svg {
+    transform: scaleY(-1);
+  }
+}
+
+.navTabActive {
+  border-bottom-color: var(--nav-tab-accent, var(--color-black));
+
+  &:hover,
+  &:focus {
+    border-bottom-color: var(--nav-tab-accent, var(--color-black));
+  }
+}

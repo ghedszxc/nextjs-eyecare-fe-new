@@ -1,0 +1,13 @@
+$space-unit: 0.5rem; // 8px
+
+$space-xs: calc($space-unit / 2); // 4px
+$space-sm: $space-unit; // 8px
+$space-md: $space-unit * 2; // 16px
+$space-lg: $space-unit * 3; // 24px
+$space-xl: $space-unit * 4; // 32px
+$space-2xl: $space-unit * 5; // 40px
+$space-3xl: $space-unit * 6; // 48px
+$space-4xl: $space-unit * 7; // 56px
+$space-5xl: $space-unit * 8; // 64px
+$space-6xl: $space-unit * 9; // 72px
+$space-7xl: $space-unit * 10; // 80px

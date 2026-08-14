@@ -1,0 +1,19 @@
+.counting-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  gap: var(--spacing-xl);
+  background: var(--color-gradient-black);
+  width: 314px;
+  color: var(--color-white);
+
+  .count::after {
+    content: '+';
+  }
+
+  .logo {
+    max-height: 67px;
+    filter: brightness(0) invert(1);
+  }
+}

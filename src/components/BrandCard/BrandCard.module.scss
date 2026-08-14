@@ -1,0 +1,48 @@
+@use '../../styles/utilities/mixins';
+
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+
+  min-height: 213px;
+  border-radius: var(--rounded-md);
+  // background-image: radial-gradient(circle, #000, #171717, #1a1a1a);
+  padding: var(--spacing-lg);
+
+  box-shadow: 0px 1px 3px 1px rgba(255, 255, 255, 0.15);
+  box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, 0.3);
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-white);
+
+    .content-title {
+      font-weight: var(--font-weight-medium);
+    }
+    .content-subtitle {
+      font-weight: var(--font-weight-bold);
+      line-height: 1.5;
+    }
+  }
+
+  .brand-image {
+    // aspect-ratio: 3 / 4;
+    // width: 199px;
+    width: 70%;
+
+    @include mixins.respond(ml) {
+      width: 100%;
+    }
+  }
+
+  &.dark {
+    background: var(--color-gradient-black);
+  }
+
+  &.light {
+    background: var(--color-gradient-white);
+  }
+}

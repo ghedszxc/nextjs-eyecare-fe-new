@@ -1,0 +1,99 @@
+@use './../../styles/base/typography' as *;
+@use './navigation-shared' as *;
+
+/* ============================================================================ */
+/* Desktop dropdown sub-menu                                                    */
+/* ============================================================================ */
+
+.dropdownPanel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  background-color: var(--color-white);
+  padding: var(--spacing-xl) 97px;
+  box-shadow: $nav-shadow-dropdown;
+}
+
+.dropdownPanelOpen {
+  // Present for parity/animation hooks; visibility is controlled by mount.
+}
+
+.dropdownInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 88px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.dropdownLinks {
+  display: flex;
+  flex-direction: column;
+  width: 386px;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdownLinkItem {
+  display: flex;
+}
+
+.dropdownLink {
+  flex: 1 0 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  color: var(--color-gray);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-link);
+    outline-offset: 2px;
+  }
+}
+
+.dropdownLinkSpacer {
+  margin-bottom: 16px;
+}
+
+.dropdownDivider {
+  width: 2px;
+  height: 160px;
+  flex-shrink: 0;
+  background-color: $nav-color-divider;
+}
+
+.dropdownInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 682px;
+  color: var(--color-true-black);
+}
+
+.dropdownTitle {
+  @extend .h2;
+  color: var(--color-black);
+}
+
+.dropdownDescription {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  color: var(--color-black);
+}

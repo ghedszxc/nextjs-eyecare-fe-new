@@ -1,0 +1,131 @@
+@use '../../styles/utilities/mixins';
+
+.featured-news-higlights {
+  background-color: var(--color-darkerbg);
+
+  h2 {
+    color: var(--color-black);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .featured-card {
+      max-width: 747px;
+
+      :global(.news-card-content) {
+        flex: 1;
+      }
+      :global(.news-card-main-content) {
+        flex: 1;
+      }
+      :global(.news-card-image) {
+        min-height: 0;
+        max-height: none;
+      }
+    }
+
+    .side-content {
+      min-width: 510px;
+
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+
+      :global(.news-card-title) {
+        @include mixins.line-clamp(2);
+      }
+      :global(.news-card-description) {
+        @include mixins.line-clamp(1);
+        min-width: 0;
+        max-width: 227px;
+      }
+      :global(.news-card-main-content) {
+        min-height: 81.97px;
+        min-width: 0;
+      }
+    }
+
+    @include mixins.respond(md) {
+      .content-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-card {
+        min-width: 0;
+        min-height: 0;
+
+        :global(.news-card-title) {
+          @include mixins.line-clamp(2);
+        }
+        :global(.news-card-description) {
+          @include mixins.line-clamp(3);
+        }
+      }
+
+      .side-content {
+        min-width: 0;
+
+        gap: var(--spacing-md);
+
+        .side-cards {
+          height: auto;
+        }
+
+        :global(.news-card-description) {
+          @include mixins.line-clamp(3);
+          height: auto;
+          max-width: none;
+        }
+      }
+    }
+  }
+
+  .carousel {
+    margin: 0;
+    .carousel-wrapper {
+      display: flex !important;
+      align-items: stretch !important;
+
+      .carousel-list-item {
+        max-width: 258px;
+        height: auto !important;
+        display: flex !important;
+      }
+      .carousel-news-card {
+        :global(.news-card-content) {
+          flex: 1;
+        }
+        :global(.news-card-main-content) {
+          flex: 1;
+
+          :global(.news-card-title) {
+            @include mixins.line-clamp(2);
+          }
+
+          :global(.news-card-description) {
+            @include mixins.line-clamp(3);
+          }
+        }
+        :global(.news-card-image) {
+          height: 135.26px;
+        }
+      }
+    }
+  }
+}

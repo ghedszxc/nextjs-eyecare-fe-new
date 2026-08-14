@@ -1,0 +1,111 @@
+@use '../tokens/typography' as *;
+@use '../tokens/colors' as *;
+@use '../utilities/mixins' as *;
+
+html,
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  color: $color-neutral-700;
+}
+
+h1,
+.h1 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight-5;
+
+  @include respond(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h2,
+.h2 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight-4;
+
+  @include respond(md) {
+    font-size: $font-size-xl;
+  }
+}
+
+h3,
+.h3 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight-3;
+
+  @include respond(md) {
+    font-size: $font-size-lg;
+  }
+}
+
+h4,
+.h4 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight-2;
+
+  @include respond(md) {
+    font-size: 18px;
+  }
+}
+
+h5,
+.h5 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight-1;
+
+  @include respond(md) {
+    font-size: 18px;
+  }
+}
+
+.subheading {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight-1;
+
+  @include respond(md) {
+    font-size: 18px;
+  }
+
+  strong {
+    font-weight: $font-weight-medium;
+    color: #000000;
+  }
+}
+
+.body {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+small,
+.small {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+.smallest {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "name": "@digital-b2c/coreui-kit",
+  "version": "0.19.2",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/luxottica_rona/ui-elec-app.git"
+  },
+  "homepage": "https://bitbucket.org/luxottica_rona/ui-elec-app",
+  "bugs": {
+    "url": "https://bitbucket.org/luxottica_rona/ui-elec-app/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "postbuild": "node scripts/copy-types.js",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "vitest",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,scss,css,md}": [
+      "prettier --write"
+    ]
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "react-player": "^3.4.0",
+    "swiper": "^12.1.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "@storybook/addon-a11y": "^10.2.14",
+    "@storybook/addon-docs": "^10.2.14",
+    "@storybook/addon-vitest": "^10.2.14",
+    "@storybook/react-vite": "^10.2.14",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "esbuild-plugin-svgr": "^1.1.0",
+    "esbuild-sass-plugin": "^3.7.0",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-storybook": "^10.2.14",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.1",
+    "prettier": "^3.8.1",
+    "sass": "^1.98.0",
+    "storybook": "^10.2.14",
+    "tsup": "^8.0.1",
+    "typescript": "^5",
+    "typescript-eslint": "^8.56.1",
+    "vite-plugin-svgr": "^4.5.0",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.0.18"
+  }
+}

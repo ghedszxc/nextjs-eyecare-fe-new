@@ -1,0 +1,199 @@
+@use './../../styles/base/typography' as *;
+@use '../../styles/utilities/mixins';
+
+.textEvent {
+  width: 100%;
+  padding: var(--spacing-3xl) var(--spacing-7xl);
+
+  @include mixins.respond(md) {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .title {
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-black);
+
+    @include mixins.respond(md) {
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-lg);
+    }
+  }
+
+  .richText {
+    p {
+      @extend .subheading;
+      margin-bottom: var(--spacing-xl);
+      color: var(--color-gray);
+
+      @include mixins.respond(md) {
+        font-size: var(--font-size-md);
+      }
+    }
+
+    p:first-child {
+      line-height: 140%;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    p:empty {
+      display: none;
+      margin: 0;
+    }
+
+    a {
+      font-weight: var(--font-weight-medium);
+    }
+
+    strong {
+      color: var(--color-black);
+    }
+
+    h2 {
+      @extend .h3;
+      margin-bottom: var(--spacing-xl);
+      color: var(--color-black);
+    }
+
+    h3 {
+      @extend .subheading;
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-gray);
+
+      @include mixins.respond(md) {
+        font-size: var(--font-size-md);
+      }
+    }
+
+    br {
+      display: block;
+      content: '';
+      margin-bottom: var(--spacing-sm); // control the gap size
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    table:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    tr {
+      border-bottom: 1px solid transparent;
+    }
+
+    td {
+      @extend .subheading;
+      padding-bottom: var(--spacing-lg);
+      vertical-align: top;
+      color: var(--color-black);
+      @include mixins.respond(md) {
+        font-size: var(--font-size-md);
+      }
+    }
+
+    // LEFT COLUMN (dates)
+    td:first-child {
+      width: 17.5625rem;
+      text-align: right;
+      padding-right: var(--spacing-xl);
+      white-space: nowrap;
+
+      @include mixins.respond(md) {
+        padding: var(--spacing-lg) 0;
+        width: unset;
+        text-align: left;
+        padding-right: var(--spacing-lg);
+        white-space: normal;
+
+        // MOBILE: DIVIDER
+        border-bottom: 1px solid #e3e3e3;
+      }
+    }
+
+    // DESKTOP: DIVIDER
+    td:last-child {
+      border-left: 1px solid #e3e3e3;
+      padding-left: var(--spacing-xl);
+
+      @include mixins.respond(md) {
+        border-left: unset;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e3e3e3;
+        text-align: left;
+        padding-left: var(--spacing-lg);
+      }
+    }
+
+    tbody tr:last-child td {
+      padding-bottom: 0 !important;
+    }
+
+    // VARIANT: table-center - centers the table and adjusts text alignment
+    &.table-center {
+      table {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+
+        // Target the first row's first cell
+        tr:first-child td:first-child {
+          padding-top: 14px;
+
+          @include mixins.respond(md) {
+            padding-top: 0px;
+          }
+        }
+
+        // Target the first row's second cell
+        tr:first-child td:last-child {
+          padding-top: 14px;
+          @include mixins.respond(md) {
+            padding-top: 0px;
+          }
+        }
+
+        // Left column (location/dates) - text align right
+        td:first-child {
+          text-align: right;
+        }
+
+        // Right column (description) - text align left
+        td:last-child {
+          text-align: left;
+          border-left: 1px solid #e3e3e3;
+          @include mixins.respond(md) {
+            border-left: unset;
+          }
+        }
+
+        tr {
+          @include mixins.respond(md) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #e3e3e3;
+            column-gap: 32px;
+            align-items: center;
+            padding: 8px 0;
+          }
+        }
+
+        td {
+          @include mixins.respond(md) {
+            font-size: 1.125rem;
+            padding: 0;
+            border: none !important;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}

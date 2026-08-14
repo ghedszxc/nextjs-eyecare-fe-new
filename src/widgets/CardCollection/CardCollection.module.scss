@@ -1,0 +1,149 @@
+@use '../../styles/utilities/mixins';
+
+.card-collection {
+  display: block;
+  width: 100%;
+  background-color: var(--color-white);
+
+  h2 {
+    color: var(--color-black);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .content {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .wrapper .cardWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  &.threeCols .cardWrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  &.fourCols .cardWrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &.examCard .wrapper {
+    .cardWrapper {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      max-height: none;
+      height: 296px;
+      overflow: hidden;
+
+      .reveal-wrapper {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .reveal-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        width: 100%;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 160px;
+        min-width: 258px;
+        flex: 1 1 calc(25% - var(--spacing-md));
+
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+
+        &:nth-child(n + 5):nth-child(-n + 8) {
+          &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 45%);
+            z-index: 3;
+          }
+        }
+
+        h3,
+        p {
+          position: relative;
+          z-index: 3;
+          color: var(--color-white);
+        }
+      }
+
+      &.is-expanded .card::after {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+      }
+
+      .cta {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+      }
+    }
+  }
+
+  @include mixins.respond(lg) {
+    &.fourCols .cardWrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @include mixins.respond(md) {
+    padding: var(--spacing-lg) var(--spacing-md);
+
+    .wrapper .cardWrapper {
+      grid-template-columns: 1fr;
+    }
+
+    &.threeCols .wrapper .cardWrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &.examCard {
+      .wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        .cardWrapper {
+          width: 1100px;
+          height: auto;
+          max-height: none;
+          gap: var(--spacing-md);
+          padding-bottom: var(--spacing-sm);
+        }
+      }
+
+      .card {
+        flex: 1 1 calc(25% - var(--spacing-md));
+        min-height: auto;
+      }
+
+      .reveal-wrapper,
+      .reveal-inner {
+        display: contents;
+      }
+
+      .cta,
+      .card::after {
+        display: none;
+      }
+    }
+  }
+}

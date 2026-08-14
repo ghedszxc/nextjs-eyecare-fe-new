@@ -1,0 +1,14 @@
+@use '../../styles/utilities/mixins';
+
+.blog-card-grid {
+  h4 {
+    color: var(--color-black);
+    font-weight: 500;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+}

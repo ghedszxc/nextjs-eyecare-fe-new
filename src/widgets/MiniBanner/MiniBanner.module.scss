@@ -1,0 +1,243 @@
+@use '../../styles/utilities/mixins';
+
+.minibanner {
+  width: 100%;
+  background-color: #f3f3f3;
+  min-height: 192px;
+  position: relative;
+  color: var(--color-white);
+  padding: var(--spacing-3xl) var(--spacing-7xl);
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+
+    .textContainer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;
+      gap: var(--spacing-lg);
+      z-index: 2;
+
+      .logo {
+        width: 100%;
+        max-width: 384px;
+      }
+
+      .pretitle {
+        color: var(--color-light-gray);
+      }
+
+      .headingWrapper {
+        display: flex;
+        gap: var(--spacing-md);
+        align-items: center;
+        // justify-content: stretch;
+
+        .back-button {
+          width: 56px;
+          height: 56px;
+
+          svg {
+            min-width: 56px;
+            height: 56px;
+          }
+        }
+
+        .title {
+          font-weight: 400;
+        }
+      }
+    }
+
+    .ctaContainer {
+      position: relative;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+
+  &.miniBannerNoBG {
+    color: var(--color-black);
+    padding: var(--spacing-5xl) var(--spacing-7xl);
+
+    .wrapper {
+      .textContainer {
+        gap: var(--spacing-xl);
+
+        .headingWrapper {
+          gap: var(--spacing-sm);
+
+          .title {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  &.miniBannerTextLeft {
+    min-height: 0;
+    padding: 0;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+
+      padding-top: var(--spacing-5xl);
+      padding-bottom: var(--spacing-5xl);
+    }
+    .wrapper {
+      align-items: flex-start;
+      gap: var(--spacing-xl);
+
+      .textContainer {
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+
+        .headingWrapper {
+          align-items: flex-start;
+        }
+
+        .title {
+          text-align: left;
+          font-weight: 600;
+        }
+        .subtitle {
+          max-width: 881px;
+        }
+      }
+    }
+  }
+
+  // exclusive for single news page
+  &:global(.single-news-miniBanner-textLeft) {
+    min-height: 0;
+
+    .container {
+      padding-top: var(--spacing-lg);
+      padding-bottom: var(--spacing-lg);
+    }
+
+    .wrapper {
+      .textContainer {
+        .headingWrapper {
+          .back-button {
+            width: 40px;
+            height: 40px;
+
+            img {
+              width: 40px;
+              height: 40px;
+              object-fit: cover;
+            }
+          }
+          .title {
+            line-height: 125%;
+            font-size: var(--font-size-2xl);
+          }
+        }
+      }
+    }
+  }
+
+  // exclusive for home page
+  &:global(.home-miniBanner-textLeft) {
+    min-height: 0;
+
+    .wrapper {
+      .textContainer {
+        gap: var(--spacing-xl);
+      }
+    }
+  }
+
+  @include mixins.respond(md) {
+    padding-inline: var(--spacing-md);
+
+    .wrapper {
+      .textContainer {
+        .headingWrapper {
+          .title {
+          }
+        }
+      }
+
+      .ctaContainer {
+      }
+    }
+
+    &.miniBannerNoBG {
+      padding: 0;
+      .wrapper {
+        .textContainer {
+          // padding: var(--spacing-5xl) var(--spacing-md);
+
+          .headingWrapper {
+            .title {
+            }
+          }
+        }
+      }
+    }
+
+    &.miniBannerTextLeft {
+      .container {
+        display: flex;
+        flex-direction: column;
+
+        padding-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+      }
+      .wrapper {
+        .textContainer {
+          .headingWrapper {
+            .back-button {
+              width: 42px;
+              height: 42px;
+
+              svg {
+                min-width: 42px;
+                min-height: 42px;
+              }
+            }
+            .title {
+              line-height: 133%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .container {
+//   width: 100%;
+//   max-width: 100vw;
+//   overflow: visible;
+//   margin: 0 auto;
+//   position: relative;
+//   padding: var(--spacing-3xl) var(--spacing-md);
+
+//   @include mixins.respond(md) {
+//     padding: var(--spacing-lg) var(--spacing-md);
+//   }
+// }

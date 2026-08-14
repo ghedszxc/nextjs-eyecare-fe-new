@@ -1,0 +1,66 @@
+@use '../../styles/utilities/mixins';
+
+.practice-path-cards {
+  display: block;
+  width: 100%;
+  background-color: var(--color-white);
+
+  h2 {
+    color: var(--color-black);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+
+    @include mixins.respond(md) {
+      flex-direction: column;
+
+      .ctaWrapper {
+        width: 100%;
+        padding: 0 var(--spacing-lg);
+
+        .cta {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 16px;
+    justify-content: center;
+
+    @include mixins.respond(md) {
+      flex-direction: column;
+    }
+  }
+
+  .card {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 33.333%;
+
+    @include mixins.respond(md) {
+      width: 100%;
+      max-width: none;
+    }
+  }
+}

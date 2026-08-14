@@ -1,0 +1,14 @@
+@use '../../../styles/utilities/mixins';
+
+.container {
+  width: 100%;
+  max-width: calc(1280px + 32px);
+  overflow: visible;
+  margin: 0 auto;
+  position: relative;
+  padding: var(--spacing-3xl) var(--spacing-md);
+
+  @include mixins.respond(md) {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+}

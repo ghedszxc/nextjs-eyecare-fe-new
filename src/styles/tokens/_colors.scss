@@ -1,0 +1,44 @@
+/* Neutral palette */
+$color-neutral-0: #ffffff;
+$color-neutral-900: #000000;
+$color-neutral-800: #080808;
+$color-neutral-700: #4d4d4d;
+$color-neutral-350: #cecece;
+$color-neutral-300: #cec3c3;
+$color-neutral-200: #f1f1f1;
+$color-neutral-100: #dbdbdb;
+$color-neutral-50: #ededed;
+
+// Gray
+$color-gray-50: #fafafa;
+
+/* General palette */
+$color-blue: #0035ba;
+
+/* Gradient palette */
+$color-gradient-black: radial-gradient(
+  98.36% 208.67% at 2.71% 100%,
+  #000000 0%,
+  #171717 57.8%,
+  #1a1a1a 99.99%
+);
+$color-gradient-graytowhite: linear-gradient(360deg, #ffffff 0%, #f3f3f3 100%);
+$color-gradient-white:
+  linear-gradient(89.48deg, rgba(255, 255, 255, 0.25) -2.75%, rgba(153, 153, 153, 0) 187.82%),
+  linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+
+/* Brand palette */
+$color-lenscrafter-blue: #192c50;
+$color-lenscrafter-desctext: #475673;
+
+$color-foreyes-brown: #fe5000;
+$color-foreyes-icontext: #a52e0d;
+$color-foreyes-desctext: #884634;
+
+$color-targetoptical-red: #d71b32;
+$color-targetoptical-icontext: #65131d;
+$color-targetoptical-desctext: #84424a;
+
+$color-pearlevision-green: #5c9541;
+$color-pearlevision-icontext: #19300e;
+$color-pearlevision-desctext: #47593e;

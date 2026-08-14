@@ -1,0 +1,127 @@
+@use '../../styles/utilities/mixins';
+@use './navigation-shared' as *;
+
+/* ============================================================================ */
+/* Navigation shell                                                             */
+/* ============================================================================ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-black);
+  opacity: 0.5;
+  z-index: 98;
+  pointer-events: none;
+}
+
+.navigation {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  background-color: var(--color-white);
+  transition: background-color 0.3s ease;
+
+  &.dropdownOpen .mainBar {
+    box-shadow: none;
+  }
+
+  // External variant — transparent-over-hero treatment.
+  &.variantTransparent {
+    position: fixed;
+  }
+
+  // Transparent state exposes its theming as custom properties so descendant
+  // components (nav tabs, login button) can react across module boundaries.
+  &.transparent {
+    background-color: transparent;
+    --nav-item-color: var(--color-white);
+    --nav-tab-color: var(--color-white);
+    --nav-tab-accent: var(--color-white);
+    --nav-trigger-svg-filter: brightness(0) invert(1);
+
+    .mainBar {
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    .logo {
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+  }
+}
+
+.mainBar {
+  width: 100%;
+  background-color: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-7xl);
+  box-shadow: $nav-shadow-bar;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  @include mixins.respond(md) {
+    padding: 13px var(--spacing-md);
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+// ─── Top row: logo + user ────────────────────────────────────────────────────
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  min-height: 52px;
+
+  @include mixins.respond(md) {
+    min-height: 0;
+  }
+
+  // External variant — login + right-button CTAs.
+  .upperRight {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.logo {
+  width: 349px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logoMobile {
+  width: 233px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.hamburger {
+  @include icon-button;
+}
+
+.hamburgerButton {
+  @include icon-button;
+}
+
+// ─── Bottom row: nav tabs + search ───────────────────────────────────────────
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  min-height: 33px;
+}

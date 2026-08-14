@@ -1,0 +1,17 @@
+@use '../../styles/utilities/mixins';
+
+.image-desktop {
+  display: block;
+
+  @include mixins.respond(md) {
+    display: none;
+  }
+}
+
+.image-mobile {
+  display: none;
+
+  @include mixins.respond(md) {
+    display: block;
+  }
+}

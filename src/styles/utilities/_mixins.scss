@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use '../tokens/breakpoints' as *;
+
+@mixin respond($breakpoint) {
+  $size: map.get($breakpoints, $breakpoint);
+
+  @if $size != null and $size != 0 {
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else if $size == 0 {
+    // xs or default
+    @content;
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in $breakpoints map.";
+  }
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

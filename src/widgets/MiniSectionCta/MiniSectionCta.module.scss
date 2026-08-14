@@ -1,0 +1,178 @@
+@use '../../styles/utilities/mixins';
+
+.miniSectionCta {
+  display: block;
+  width: 100%;
+  background-color: var(--color-white);
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    padding: 0;
+
+    @include mixins.respond(md) {
+      flex-direction: column;
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h2 {
+    color: var(--color-black);
+  }
+
+  &.BgColorBlack {
+    background-color: var(--color-black);
+    color: var(--color-white);
+
+    h2 {
+      color: var(--color-light-gray-2);
+    }
+
+    @include mixins.respond(md) {
+      text-align: center;
+    }
+  }
+
+  &.infoCallout {
+    background-color: var(--custom-background-color, var(--color-white));
+
+    .col {
+      flex-direction: row;
+      gap: 112px;
+      align-items: center;
+    }
+
+    h2 {
+      min-width: fit-content;
+      color: var(--custom-color, var(--color-black));
+    }
+
+    .subtitle {
+      color: var(--custom-color, var(--color-black));
+      font-weight: var(--font-weight-medium);
+
+      p {
+        color: var(--color-gray);
+        a {
+          color: var(--custom-color, var(--color-black));
+        }
+      }
+    }
+
+    // &.--color-black {
+    //   .subtitle {
+    //     color: var(--custom-color);
+    //     font-weight: var(--font-weight-medium);
+    //     p {
+    //       color: var(--color-light-gray-2);
+
+    //       a {
+    //         color: var(--custom-color);
+    //       }
+    //     }
+    //   }
+    // }
+
+    @include mixins.respond(md) {
+      .col {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+      }
+
+      .subtitle {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-medium);
+        line-height: var(--line-height-tight-1);
+      }
+    }
+  }
+
+  &.miniTextCenterCta .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // &.light {
+  //   background-color: var(--color-white);
+
+  //   h2,
+  //   .subtitle {
+  //     color: var(--color-black);
+  //   }
+  // }
+
+  &.light,
+  &.gray {
+    h2 {
+      color: var(--custom-color, var(--color-black));
+    }
+    .subtitle {
+      color: var(--custom-color, var(--color-black));
+      font-weight: var(--font-weight-medium);
+
+      p {
+        color: var(--color-gray);
+        a {
+          color: var(--custom-color, var(--color-black));
+        }
+      }
+    }
+  }
+
+  &.dark {
+    h2 {
+      color: var(--custom-color, var(--color-white));
+    }
+    .subtitle {
+      color: var(--custom-color, var(--color-white));
+      font-weight: var(--font-weight-medium);
+      p {
+        color: var(--color-light-gray-2);
+
+        a {
+          color: var(--custom-color, var(--color-white));
+        }
+      }
+    }
+  }
+
+  // &.dark {
+  //   background-color: var(--color-black);
+
+  //   h2 {
+  //     color: var(--color-white);
+  //   }
+
+  //   .subtitle {
+  //     color: var(--color-light-gray-2);
+  //     font-weight: var(--font-weight-medium);
+
+  //     a {
+  //       color: var(--color-white);
+  //     }
+  //   }
+  // }
+
+  @include mixins.respond(md) {
+    .cta {
+      width: 100%;
+    }
+
+    &.BgColorGrey {
+      text-align: center;
+    }
+
+    &.miniTextCenterCta .col {
+      width: 100%;
+    }
+  }
+}

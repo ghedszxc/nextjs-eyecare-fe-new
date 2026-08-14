@@ -1,0 +1,183 @@
+@use './../../styles/base/typography' as *;
+@use '../../styles/utilities/mixins';
+
+.textBody {
+  width: 100%;
+  padding: var(--spacing-3xl) var(--spacing-7xl);
+
+  @include mixins.respond(md) {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .title {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-black);
+
+    @include mixins.respond(md) {
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-lg);
+    }
+  }
+
+  &.articleBigPadding .title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xl);
+
+    @include mixins.respond(md) {
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-md);
+    }
+  }
+
+  .body {
+    @include mixins.respond(md) {
+      padding: 0 var(--spacing-md);
+    }
+
+    p {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-regular);
+      line-height: 1.5;
+      margin-bottom: var(--spacing-xl);
+      color: var(--color-black);
+
+      @include mixins.respond(md) {
+        font-size: var(--font-size-md);
+      }
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    p:empty {
+      display: none;
+      margin: 0;
+    }
+
+    strong {
+      font-weight: var(--font-weight-bold);
+      color: var(--color-black);
+    }
+
+    p:has(strong) {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: var(--color-link);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    h2 {
+      @extend .h3;
+      font-weight: var(--font-weight-bold);
+      color: var(--color-black);
+    }
+
+    h3,
+    h4 {
+      @extend .subheading;
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-black);
+    }
+
+    br {
+      display: block;
+      content: '';
+      margin-bottom: var(--spacing-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--spacing-xl);
+      border: 1px solid rgba(8, 8, 8, 0.5);
+      table-layout: fixed;
+    }
+
+    table:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    th,
+    td {
+      padding: 8px 16px;
+      border: 1px solid rgba(8, 8, 8, 0.5);
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-regular);
+      line-height: 1.5;
+      color: var(--color-black);
+      vertical-align: top;
+      overflow-wrap: break-word;
+      word-break: break-word;
+
+      @include mixins.respond(md) {
+        padding: 8px;
+        font-size: var(--font-size-sm);
+      }
+    }
+
+    tbody tr:first-child {
+      background: #dedede;
+      font-weight: var(--font-weight-semibold);
+      text-align: left;
+    }
+
+    ol,
+    ul {
+      margin-left: 24px;
+      margin-bottom: var(--spacing-xl);
+
+      li {
+        margin-bottom: var(--spacing-sm);
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-regular);
+        line-height: 1.5;
+        color: var(--color-black);
+      }
+
+      ol,
+      ul {
+        margin-left: 48px;
+        list-style-type: lower-alpha;
+      }
+    }
+
+    blockquote {
+      border-left: 5px solid var(--color-gray);
+      padding: 5px 0 1px 30px;
+      margin: 15px 0;
+
+      font-size: 1.125em;
+      line-height: 1.125em;
+    }
+
+    :is(h1, h2, h3, h4, h5, h6, span):global(.align--center) {
+      text-align: center;
+
+      @include mixins.respond(md) {
+        text-align: justify;
+      }
+    }
+
+    p:global(.align--center) {
+      text-align: center;
+      margin-bottom: var(--spacing-lg) !important;
+
+      @include mixins.respond(md) {
+        text-align: justify;
+      }
+    }
+
+    table p:global(.align--center) {
+      margin-bottom: 0 !important;
+      text-align: center;
+    }
+
+    p:global(.align--center):last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+}

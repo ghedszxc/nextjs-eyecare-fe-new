@@ -1,0 +1,221 @@
+@use '../../styles/utilities/mixins';
+
+.news-card {
+  position: relative;
+
+  display: flex;
+  gap: var(--spacing-md);
+
+  border: 1px solid var(--color-extra-light-gray);
+  border-radius: var(--rounded-md);
+  background-color: var(--color-white);
+
+  overflow: hidden;
+  transition: all 0.5s ease;
+
+  .news-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1; // sits above card content but below the CTA wrapper
+    border-radius: inherit;
+
+    // Visible focus ring for keyboard users
+    &:focus-visible {
+      outline: 2px solid var(--color-link);
+      outline-offset: -2px;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    background-color: #fbfbfb;
+    .news-card-cta {
+      background-color: red;
+      transform: translateY(0px) !important;
+    }
+  }
+
+  .news-card-image {
+    object-fit: cover;
+  }
+
+  .news-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    width: 100%;
+
+    padding: 0 var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    padding-top: var(--no-image-padding);
+
+    .news-card-top-content {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--spacing-xs);
+      align-items: center;
+      flex-wrap: wrap;
+
+      .news-card-badge {
+        background-color: #fafafa;
+        padding: 5.5px 1rem;
+        font-size: var(--font-size-sm);
+      }
+
+      .news-card-date {
+        color: var(--color-gray);
+      }
+    }
+
+    .news-card-main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+
+      .news-card-title {
+        font-size: var(--font-size-lg);
+        color: var(--color-black);
+      }
+
+      .news-card-description,
+      p {
+        color: var(--color-gray);
+        font-size: var(--font-size-md);
+
+        @include mixins.line-clamp(3);
+      }
+    }
+  }
+
+  .news-card-cta-wrapper {
+    position: relative;
+    z-index: 2; // above .news-card-link so the button is still clickable
+
+    .news-card-cta {
+      border: 0;
+      padding: 0;
+      border-radius: 0;
+      background-color: transparent;
+
+      transition:
+        transform 0.5s ease,
+        background-color 0.5s ease;
+
+      transform: translateY(35px);
+
+      &:hover {
+        border-bottom: 1px solid var(--color-black);
+      }
+
+      // &:hover {
+      //   border-bottom: 1px solid var(--color-black);
+      //   transform: translateY(50px);
+      // }
+      // &:focus {
+      //   border-bottom: 1px solid var(--color-black);
+      //   transform: translateY(-50px);
+      // }
+    }
+  }
+
+  &--vertical {
+    min-height: 493px;
+
+    flex-direction: column;
+
+    .news-card-image {
+      min-height: 218.1px;
+      max-height: 218.1px;
+      @include mixins.respond(md) {
+        min-height: 0;
+        max-height: none;
+        width: 100%;
+      }
+    }
+
+    .news-card-content {
+      .news-card-top-content {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--spacing-xs);
+        align-items: center;
+
+        .news-card-badge {
+          background-color: #fafafa;
+          padding: 5.5px 1rem;
+          font-size: var(--font-size-sm);
+        }
+
+        .news-card-date {
+          color: var(--color-gray);
+        }
+      }
+    }
+  }
+
+  &--horizontal {
+    padding: var(--spacing-md);
+
+    flex-direction: row-reverse;
+    align-items: center;
+
+    .news-card-image {
+      height: 122px;
+      width: 233px;
+    }
+
+    .news-card-content {
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 0;
+
+    min-height: 0;
+    height: 100%;
+
+    .news-card-image {
+      object-fit: cover;
+      height: auto;
+      width: 100%;
+    }
+
+    .news-card-content {
+      padding: 0 var(--spacing-md);
+      padding-bottom: var(--spacing-md);
+    }
+
+    // Hide the CTA entirely — pointer and keyboard — on mobile
+    .news-card-cta-wrapper {
+      display: none;
+    }
+  }
+
+  &.restricted {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: var(--color-gray-50);
+    border-color: var(--color-double-extra-light-gray);
+
+    .news-card-link {
+      cursor: inherit;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background-color: var(--color-gray-50);
+    }
+
+    .news-card-cta-wrapper {
+      display: none;
+    }
+  }
+}

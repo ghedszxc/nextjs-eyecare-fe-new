@@ -1,0 +1,9 @@
+@use './navigation-shared' as *;
+
+// Logo anchor — shared by the top bar and the mobile menu header.
+.mainLogoLink {
+  display: inline-flex;
+  align-items: center;
+
+  @include focus-ring(0.5rem);
+}

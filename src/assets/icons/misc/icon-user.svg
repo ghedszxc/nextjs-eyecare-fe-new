@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <clipPath id="avatar-clip">
+      <rect x="0.5" y="0.5" width="23" height="23" rx="11.5" />
+    </clipPath>
+  </defs>
+
+  <g id="user 1">
+    <rect x="0.5" y="0.5" width="23" height="23" rx="11.5" fill="#EEEEEE"/>
+    
+    <g clip-path="url(#avatar-clip)">
+      <g id="Vector">
+        <path d="M21 23V20.6667C21 19.429 20.5259 18.242 19.682 17.3668C18.8381 16.4917 17.6935 16 16.5 16H7.5C6.30653 16 5.16193 16.4917 4.31802 17.3668C3.47411 18.242 3 19.429 3 20.6667V23" fill="#B5B5B5"/>
+        <path d="M21 23V20.6667C21 19.429 20.5259 18.242 19.682 17.3668C18.8381 16.4917 17.6935 16 16.5 16H7.5C6.30653 16 5.16193 16.4917 4.31802 17.3668C3.47411 18.242 3 19.429 3 20.6667V23" stroke="#A8A8A8" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <path id="Vector_2" d="M12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13Z" fill="#B5B5B5" stroke="#A8A8A8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="#A8A8A8"/>
+  </g>
+</svg>

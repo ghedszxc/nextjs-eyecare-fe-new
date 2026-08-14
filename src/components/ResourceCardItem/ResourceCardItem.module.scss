@@ -1,0 +1,243 @@
+@use '../../styles/utilities/mixins';
+
+// Link wrapper (when a resource has an href)
+.cardLink {
+  // global search variant
+  &.global-search {
+    position: absolute;
+    inset: 0;
+    z-index: 1; // sits above card content but below the CTA wrapper
+    border-radius: inherit;
+
+    // Visible focus ring for keyboard users
+    &:focus-visible {
+      outline: 2px solid var(--color-link);
+      outline-offset: -2px;
+    }
+  }
+
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// Grid card
+.cardGrid {
+  // global search variant
+  &.global-search {
+    position: relative;
+    &:focus-within {
+      background: var(--neutral-50, #ededed);
+    }
+
+    &.restricted {
+      cursor: not-allowed;
+      opacity: 0.6;
+      background-color: var(--color-gray-50);
+      border-color: var(--color-double-extra-light-gray);
+
+      .cardLink {
+        cursor: inherit;
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: var(--color-gray-50);
+      }
+    }
+  }
+
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--grayoutline, #dbdbdb);
+  background: white;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-link);
+    outline-offset: -2px;
+  }
+
+  &:hover {
+    background: var(--neutral-50, #ededed);
+  }
+
+  @include mixins.respond(md) {
+    // Let the card stretch to the tallest sibling in the grid row so the
+    // body can fill it and pin the date to the true bottom.
+    display: flex;
+    flex-direction: column;
+
+    .cardBody {
+      height: 100%;
+      min-height: 236px;
+      padding: 16px;
+    }
+  }
+}
+
+.cardBody {
+  padding: 24px 24px 16px;
+  height: 314px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardIconTitle {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  min-width: 0;
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}
+
+.cardTitle {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  font-size: var(--size-body, 16px);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  color: var(--base-black, #080808);
+
+  @include mixins.line-clamp(3);
+
+  @include mixins.respond(md) {
+    letter-spacing: -0.08px;
+  }
+}
+
+.cardBodyTextGrid {
+  margin: 1rem 0;
+  max-height: 130px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include mixins.respond(lg) {
+    margin: 0.875rem 0;
+  }
+}
+
+.cardBodyTextList {
+  margin: 0.875rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 150px;
+}
+
+.cardListHeader {
+  width: 100%;
+}
+
+.cardBodyText {
+  color: #4d4d4d;
+
+  font-family: var(--font-weight-medium);
+  font-size: var(--size-body, 14px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 21px */
+
+  @include mixins.line-clamp(6);
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardDate {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4d4d4d;
+  white-space: nowrap;
+}
+
+// List row (desktop)
+.cardList {
+  background: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--grayoutline, #dbdbdb);
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--neutral-50, #ededed);
+  }
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 24px;
+    border: 1px solid var(--grayoutline, #dbdbdb);
+    border-radius: 8px;
+    border-bottom: 1px solid var(--grayoutline, #dbdbdb);
+    margin-bottom: 16px;
+  }
+}
+
+.cardListLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 120px;
+
+  @include mixins.respond(md) {
+    order: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.cardListRight {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+
+  @include mixins.respond(md) {
+    order: 1;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    width: 100%;
+    flex: none;
+  }
+}
+
+.notificationDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #c00000;
+  flex-shrink: 0;
+}
+
+.iconWrapper {
+  width: 37px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

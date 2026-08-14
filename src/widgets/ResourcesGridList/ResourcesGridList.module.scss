@@ -1,0 +1,166 @@
+@use '../../styles/utilities/mixins';
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+  width: 100%;
+  padding: var(--spacing-3xl) var(--spacing-7xl);
+
+  scroll-margin-top: 133px; // height of nav bar
+
+  @include mixins.respond(md) {
+    padding: var(--spacing-lg) var(--spacing-md);
+
+    scroll-margin-top: 64; // height of nav bar
+  }
+}
+
+// Layout
+.content {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1280px;
+
+  @include mixins.respond(md) {
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+    min-height: 78vh;
+  }
+}
+
+// Mobile sidebar overlay (full-width drawer)
+.mobileSidebarOverlay {
+  display: none;
+
+  @include mixins.respond(md) {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    z-index: 20;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+}
+
+.mobileSidebarOverlayOpen {
+  @include mixins.respond(md) {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+}
+
+// Categories list inside overlay
+.mobileCategoriesPanel {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.mobileCategoriesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: var(--size-body, 16px);
+  color: var(--base-black, #080808);
+}
+
+.mobileSidebarItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--size-body, 16px);
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  transition: background 0.2s ease;
+
+  &:hover:not(.active) {
+    background: var(--neutral-50, #ededed);
+  }
+
+  &.active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Close button column inside overlay (mirrors the 40px hamburger column)
+.mobileSidebarCloseColumn {
+  position: relative;
+  width: 40px;
+  flex-shrink: 0;
+  align-self: stretch;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: var(--base-inverted-grey, #cecece);
+    transform: translateX(-50%);
+  }
+}
+
+// Hamburger (shared with Sidebar) — close button inside the mobile overlay
+.hamburger {
+  position: relative;
+  z-index: 1;
+  background: white;
+  border: 1px solid var(--base-inverted-grey, #cecece);
+  border-radius: 26px;
+  padding: 8px;
+  display: flex;
+  cursor: pointer;
+  margin-top: 26px;
+}
+
+// Cards area
+.cardsArea {
+  flex: 1;
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @include mixins.respond(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+// Notification dot (shared with Sidebar / ResourceCardItem) — used by the
+// mobile overlay category items.
+.notificationDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #c00000;
+  flex-shrink: 0;
+}

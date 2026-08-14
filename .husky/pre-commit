@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+export NVM_DIR="$HOME/.nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+case "$branch" in
+  main|release/*|chore/*) allow_pkg=1 ;;
+  *) allow_pkg=0 ;;
+esac
+
+if [ "$allow_pkg" = "0" ] && git diff --cached --name-only | grep -qx "package.json"; then
+  echo "✖ package.json changes are only allowed on 'main', 'release/*', or 'chore/*' branches (current: $branch)."
+  echo "  Unstage it with: git restore --staged package.json"
+  exit 1
+fi
+
+npx lint-staged

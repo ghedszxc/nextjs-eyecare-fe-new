@@ -1,0 +1,351 @@
+@use '../../styles/utilities/mixins';
+
+.footer {
+  display: block;
+  width: 100%;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+
+  @include mixins.respond(md) {
+    gap: 40px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+// Support section
+.support-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include mixins.respond(md) {
+    gap: 32px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.support-heading {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-white);
+}
+
+.support {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(16px, 2.5vw, 32px);
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+    gap: 56px;
+  }
+}
+
+.support-column {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  // Constrain the 3rd/TAB column to the Figma width (~254px) so the long
+  // "The Appointment Book (TAB) Support Center" title wraps and its contact
+  // table doesn't overflow the design width.
+  &:last-child {
+    width: 254px;
+    flex-shrink: 1;
+    align-self: center;
+  }
+
+  @include mixins.respond(md) {
+    align-items: center;
+    text-align: center;
+    width: 343px;
+
+    &:not(:last-child) {
+      .support-title,
+      .support-subtitle {
+        font-weight: var(--font-weight-regular);
+      }
+    }
+  }
+}
+
+.support-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.support-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.08px;
+  line-height: 1.5;
+  color: var(--base-inverted-grey, #cecece);
+}
+
+.support-subtitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  color: var(--color-white);
+
+  p {
+    margin: 0;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  a {
+    color: var(--color-white);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Fixed layout locks the table to its column width (254px) so the long
+  // single-cell email row can't stretch the columns and overflow the footer.
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  td {
+    padding: 0 0 2px;
+    vertical-align: top;
+    // Keep every contact value (Phone/Fax numbers and the email) on one line.
+    white-space: nowrap;
+
+    &:not(:last-child) {
+      padding-right: 16px;
+    }
+  }
+
+  // Push the value to the column edge (e.g. Phone ........ (877) 720-9119).
+  td:last-child:not(:only-child) {
+    text-align: right;
+  }
+
+  @include mixins.respond(md) {
+    table,
+    tbody {
+      display: block;
+      width: 100%;
+    }
+
+    // Flex the row so cells share the width equally:
+    // 2 cells -> 50% / 50%, a single cell -> 100%
+    tr {
+      display: flex;
+      width: 100%;
+    }
+
+    td {
+      flex: 1 1 0;
+      min-width: 0;
+      text-align: left;
+    }
+
+    // In a 2-cell row, align the second cell to the right
+    td:last-child:not(:only-child) {
+      text-align: right;
+    }
+  }
+}
+
+// Bottom section
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: clamp(32px, 4vw, 80px);
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: center;
+    gap: 55px;
+  }
+}
+
+.bottom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1 1 320px;
+  min-width: 0;
+
+  @include mixins.respond(md) {
+    display: contents;
+  }
+}
+
+.bottom-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(24px, 6vw, 108px);
+  min-width: 0;
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 16px;
+    align-items: center;
+    order: 2;
+  }
+}
+
+// Supporters
+.supporters {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+
+  @include mixins.respond(md) {
+    order: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 50vw;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.supporters-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-light-gray-2);
+
+  @include mixins.respond(md) {
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-sm);
+  }
+}
+
+.supporters-logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+  flex-wrap: nowrap;
+  min-width: 0;
+
+  img {
+    height: auto;
+    max-height: clamp(30px, 4.5vw, 68px);
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  @include mixins.respond(md) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: auto;
+      max-height: 3rem;
+      width: auto;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.supporter-link-primary {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.supporter-link {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+// Disclaimer & Copyright
+.disclaimer {
+  font-size: var(--font-size-md);
+  color: var(--base-inverted-grey, #cecece);
+  line-height: 1.5;
+  margin-top: var(--spacing-xl);
+  max-width: 750px;
+
+  @include mixins.respond(md) {
+    order: 3;
+    max-width: 343px;
+    text-align: left;
+    font-size: var(--font-size-md);
+    line-height: 150%;
+    letter-spacing: -0.08px;
+    margin-top: var(--spacing-xs);
+  }
+}
+
+.copyright {
+  font-size: var(--font-size-md);
+  color: var(--base-inverted-grey, #cecece);
+
+  @include mixins.respond(md) {
+    order: 4;
+    text-align: left;
+    max-width: 343px;
+    font-size: var(--font-size-md);
+    line-height: 150%;
+    letter-spacing: -0.08px;
+  }
+}
+
+// Navigation links
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+
+  @include mixins.respond(md) {
+    align-items: center;
+  }
+}
+
+.nav-link {
+  font-size: var(--font-size-md);
+  line-height: 150%;
+  letter-spacing: -0.08px;
+  color: var(--base-inverted-grey, #cecece);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

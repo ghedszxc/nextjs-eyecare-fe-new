@@ -1,0 +1,79 @@
+@use '../../styles/utilities/mixins';
+
+// Sidebar (desktop)
+.sidebar {
+  width: 272px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-right: 1px solid var(--base-inverted-grey, #cecece);
+  padding-right: var(--spacing-lg);
+
+  @include mixins.respond(md) {
+    display: none;
+  }
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: var(--size-body, 15px);
+  font-weight: 600;
+  list-style: none;
+  transition: background 0.2s ease;
+
+  &:hover:not(.active) {
+    background: var(--neutral-50, #ededed);
+  }
+
+  &.active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Sidebar (mobile — hamburger)
+.sidebarMobile {
+  position: relative;
+  width: 40px;
+  flex-shrink: 0;
+  align-self: stretch;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: var(--base-inverted-grey, #cecece);
+    transform: translateX(-50%);
+  }
+}
+
+.label {
+  font-size: var(--size-body, 16px);
+  color: var(--base-black, #080808);
+}
+
+.hamburger {
+  position: relative;
+  z-index: 1;
+  background: white;
+  border: 1px solid var(--base-inverted-grey, #cecece);
+  border-radius: 26px;
+  padding: 8px;
+  display: flex;
+  cursor: pointer;
+  margin-top: 26px;
+}
+
+.notificationDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #c00000;
+  flex-shrink: 0;
+}

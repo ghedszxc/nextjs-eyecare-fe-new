@@ -1,0 +1,40 @@
+.logoBar {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  max-width: 303px;
+
+  a {
+    position: relative;
+    flex-shrink: 0;
+
+    .logoWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .logo {
+        display: block;
+        object-fit: contain;
+        max-height: 48px;
+      }
+
+      .logoHover {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        object-fit: contain;
+        max-height: 48px;
+      }
+    }
+
+    &:hover .logoHover {
+      opacity: 1;
+    }
+  }
+}

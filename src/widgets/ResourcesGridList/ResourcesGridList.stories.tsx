@@ -1,0 +1,397 @@
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { ComponentProps } from 'react'
+
+import { ResourcesGridList } from './ResourcesGridList'
+
+type StoryProps = ComponentProps<typeof ResourcesGridList>
+
+const meta: Meta<typeof ResourcesGridList> = {
+  title: 'Widgets/ResourcesGridList',
+  component: ResourcesGridList,
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+  },
+}
+
+export default meta
+
+type Story = StoryObj<StoryProps>
+
+const sampleCategories = [
+  { label: 'All Resources', active: true },
+  {
+    label: 'Business Planning Tools',
+    value: 'Business Planning Tools',
+    active: false,
+    hasNotification: false,
+  },
+  {
+    label: 'Sublease Administration',
+    value: 'Sublease Administration',
+    active: false,
+    hasNotification: false,
+  },
+  {
+    label: 'Insurance',
+    value: 'Insurance',
+    active: false,
+    hasNotification: false,
+  },
+  {
+    label: 'The Appointment Book (TAB)',
+    value: 'The Appointment Book (TAB)',
+    active: false,
+    hasNotification: false,
+  },
+  {
+    label: 'Environmental, Health, and Safety',
+    value: 'Environmental, Health, and Safety',
+    active: false,
+    hasNotification: false,
+  },
+]
+
+const sampleItems = [
+  {
+    title: '2026 Target Optical May Monthly Planning Packet',
+    date: '13 May 2026',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119450/data/f124a6f0f9308bfdc92978f54ece5e3a',
+    type: 'pdf',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+    bodyText:
+      'April Jasper, OD, and Mark A. Bullimore, MCOptom, PhD, highlight the most current research in myopia specifically related to myopia incidence, progression, and management. April Jasper, OD, and Mark A. Bullimore, MCOptom, PhD, highlight the most current research in myopia specifically related to myopia incidence, progression, and management.',
+  },
+  {
+    title: 'Target Optical 2026 Next Eye Exam Calendar',
+    date: '10 May 2026',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119384/data/3727af3928460cc0bbb8f84dacb6069c',
+    type: 'pdf',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+
+    bodyText: 'sample text, text, texttexttexttext text',
+  },
+  {
+    title: 'Target Optical 2026 PTO & Communications Blackout Calendar',
+    date: '21 January 2026',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119382/data/eba9569244a99d700853d84fadfb230a',
+    type: 'pdf',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+  },
+  {
+    title: '2026 Target Optical Brand Plan on a Page (POP)',
+    date: '23 January 2026',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119380/data/1572afd30254c67a4419f28af0cf0721',
+    type: 'pdf',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+  },
+  {
+    title: 'EssilorLuxottica Fiscal 2026 Calendar',
+    date: '23 January 2026',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119378/data/52dd58f28c5ecbc1d601537830ba104d',
+    type: 'pdf',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+  },
+  {
+    title: 'Target Optical OD/Store Monthly Business Planner',
+    date: '17 March 2023',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119370/data/7624f7a4fff62ccca6e004abd54c271d',
+    type: 'pdf',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+  },
+  {
+    title: 'Target Optical OD Collaboration Form',
+    date: '21 January 2026',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119368/data/3054e5297224c26b8e910be38407af80',
+    type: 'pdf',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+  },
+  {
+    title: 'Order Trial Contact Lenses',
+    date: '',
+    image:
+      'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119498/data/e1d41c145354120df0b16839d9833d49/internalextlink-icon.svg',
+    href: 'http://localhost:3000/api/sso/contact-lenses?url=https%3A%2F%2Ftarget.premiumvision.com%2FPartnerOrderPortal%2F1%2FSearch',
+    type: 'externalLink',
+    category: 'Business Planning Tools',
+    hasNotification: false,
+  },
+  {
+    title: 'Internet and Network System Policy',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119400/data/403e891ff772494e59e1cdf06ec610f2',
+    type: 'pdf',
+    category: 'Sublease Administration',
+    hasNotification: false,
+  },
+  {
+    title: '2026 Nations Benefits Additional Nuance Audio Discounts at Target Optical ',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119414/data/354364c65280609400d4174da9d27779',
+    type: 'pdf',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: '2026 Nations Benefits Additional Nuance Audio Discounts at Target Optical (2)',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119412/data/4f052f66386aa2b1a52db695751b203c',
+    type: 'pdf',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: 'CAQH',
+    date: '',
+    image:
+      'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119498/data/e1d41c145354120df0b16839d9833d49/internalextlink-icon.svg',
+    href: 'https://proview.caqh.org/Login/Index?ReturnUrl=%2f',
+    type: 'externalLink',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: 'CAQH and Credentialing Overview',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119410/data/0451e29969703ed50c4fabd31b109ea2',
+    type: 'pdf',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: 'EyeMed Online Claims Processing System',
+    date: '',
+    image:
+      'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119498/data/e1d41c145354120df0b16839d9833d49/internalextlink-icon.svg',
+    href: 'https://claims.eyemedvisioncare.com/claims/loginForm.emvc',
+    type: 'externalLink',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: 'How to Credential an Associate OD in EyeMed InFocus',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119408/data/f88b1a9e40b0ab8a8b0aaf74564dbac6',
+    type: 'pdf',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: 'How to Navigate Through RevolutionEHR, TAB, and Tele-Optometry',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119406/data/6ca1f163cc98b10e076084fba56e844e',
+    type: 'pdf',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: 'National Provider Identifier (NPI) Overview',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119404/data/0240624199b03a0882056f30efb10637',
+    type: 'pdf',
+    category: 'Insurance',
+    hasNotification: false,
+  },
+  {
+    title: 'Extend Office Hours and Insert Doctor Features',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119418/data/51b2b8e43708174a944a376bb87546a3',
+    type: 'pdf',
+    category: 'The Appointment Book (TAB)',
+    hasNotification: false,
+  },
+  {
+    title: 'TAB Doctor Resource Guide 2022',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119416/data/5764535fb5d26551bdbb37c922a2e9ca',
+    type: 'pdf',
+    category: 'The Appointment Book (TAB)',
+    hasNotification: false,
+  },
+  {
+    title: 'TAB Basic Training Video',
+    date: '',
+    image: '',
+    href: 'https://examappointments.com/tabhelp/BasicTraining.mp4',
+    type: 'externalLink',
+    category: 'The Appointment Book (TAB)',
+    hasNotification: false,
+  },
+  {
+    title: 'All TAB Training Resources',
+    date: '',
+    image:
+      'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119498/data/e1d41c145354120df0b16839d9833d49/internalextlink-icon.svg',
+    href: 'https://examappointments.com/tabhelp/index.html',
+    type: 'externalLink',
+    category: 'The Appointment Book (TAB)',
+    hasNotification: false,
+  },
+  {
+    title: 'EH&S - (July 2025) First Aid & First Aid Kits - OD version',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119454/data/4044f065f64d15b12263bcca8f3da004',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'EH&S - (May 2025) Emergency response preparedness (OD version)',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119456/data/4a37a4c58d6cebb190f49be4514cee2e',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'EHS - (AUG 2025) Fire Safety-Fire Extinguisher Memo - OD verison',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119434/data/0e99dd7a20222794b616057fc5590324',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'EHS - (Dec 2025) Electrical Safety - Arc Flash - OD version',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119458/data/c491dd586bdd73ac2b689ae1ea79efbb',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'EHS - (Jan 2025) Health Safety Manual - Annual updates - ODv',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119460/data/49748231543fd7da6021fa61c75d24ee',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'EHS - (Jan 2026) Health Safety Manual - OD version',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119462/data/f0ab52641478224cca2163ea6e612aad',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'EHS - (March 2026) HazMat Shipping - OD version',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119464/data/116d9063111f654c0ac3414acaab3c35',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'EHS - (Nov 2025) Haz Universal waste-OD Version',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119466/data/5f4b99790b93e3bf62de7ef2251a75ff',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Accident Prevention - September 2024',
+    date: '26 February 2025',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119438/data/d792faaf04d4e0427cb55a26ba92f510',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Electrical Safety Arc Flash - December 2024',
+    date: '01 March 2025',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119436/data/cec3910da7331da8ff56875a8ef5ee7a',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Fire Safety Fire Extinguisher Memo - August 2024',
+    date: '25 February 2025',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119468/data/0e99dd7a20222794b616057fc5590324',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Hazardous Universal Waste - November 2024',
+    date: '28 February 2025',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119432/data/d1e407d71801107abb33d6994b942e61',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Hazard Communication - February 2024',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119430/data/0d36a41a7aa0d2087117a7c9653afca1',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Hazardous Materials Shipping Communication - March 2024',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119428/data/f2025869da87f618ac8b8d4a735ce2c4',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Hazardous Materials Shipping - March 2025',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119426/data/048fe6366d426727e58784e1e3ab34b7',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Health Safety Manual - Annual Updates - January 2025',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119424/data/49748231543fd7da6021fa61c75d24ee',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Incident and Accident Reporting - October 2024',
+    date: '27 February 2025',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119422/data/5d6f04f9bd0c003e8d634ee46e66db27',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+  {
+    title: 'Workplace Safety During the 2023 Holiday Season',
+    date: '',
+    href: 'https://preview-stageuatelec.luxgroup.net/caas/v1/media/1119420/data/94a39c1751ddef7d7c1668de1ffee31e',
+    type: 'pdf',
+    category: 'Environmental, Health, and Safety',
+    hasNotification: false,
+  },
+]
+
+export const Default: Story = {
+  args: {
+    defaultView: 'grid',
+    categories: sampleCategories,
+    items: sampleItems,
+  },
+}
+
+export const ListView: Story = {
+  args: {
+    defaultView: 'list',
+    categories: sampleCategories,
+    items: sampleItems,
+  },
+}

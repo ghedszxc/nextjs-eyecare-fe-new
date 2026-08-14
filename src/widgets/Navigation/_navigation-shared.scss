@@ -1,0 +1,38 @@
+// Shared Navigation tokens and mixins used across the widget's split stylesheets.
+// Kept out of the global token layer because these values are Navigation-local
+// and have no matching design token.
+
+// ─── Local tokens ──────────────────────────────────────────────────────────────
+
+$nav-color-divider: #ebebeb;
+
+$nav-shadow-bar: 0 1px 2px 0 rgba(0, 0, 0, 0.25); // sticky top bar
+$nav-shadow-header: 0 1px 4px 0 rgba(0, 0, 0, 0.25); // mobile menu header
+$nav-shadow-dropdown: 0 6px 8px -4px rgba(0, 0, 0, 0.25); // desktop sub-menu panel
+$nav-shadow-brand-bar: 0 0 4px rgba(54, 54, 54, 0.1); // unfolded brand color bars
+
+// ─── Mixins ──────────────────────────────────────────────────────────────────
+
+// Keyboard focus ring shared by nav links and buttons.
+@mixin focus-ring($radius: 0.25rem) {
+  &:focus-visible {
+    border-radius: $radius;
+    outline: 3px solid var(--color-link);
+  }
+}
+
+// 24×24 borderless icon button (hamburger / close).
+@mixin icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  @include focus-ring(0.25rem);
+}

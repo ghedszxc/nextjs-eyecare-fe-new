@@ -1,0 +1,36 @@
+@use '../../styles/utilities/mixins';
+
+.grid {
+  display: grid;
+  width: 100%;
+
+  grid-template-columns: repeat(var(--grid-columns, 3), minmax(0, 1fr));
+
+  gap: var(--grid-gap, 1rem);
+
+  .grid-item {
+    min-width: 0;
+
+    grid-column: span var(--col-xl, 1);
+
+    @include mixins.respond(lg) {
+      grid-column: span var(--col-lg, var(--col-xl, 1));
+    }
+
+    @include mixins.respond(md) {
+      grid-column: span var(--col-md, 12);
+    }
+
+    @include mixins.respond(ml) {
+      grid-column: span var(--col-ml, var(--col-md, 12));
+    }
+
+    @include mixins.respond(mm) {
+      grid-column: span var(--col-mm, var(--col-ml, var(--col-md, 12)));
+    }
+
+    @include mixins.respond(xs) {
+      grid-column: span var(--col-xs, var(--col-mm, var(--col-ml, var(--col-md, 12))));
+    }
+  }
+}
